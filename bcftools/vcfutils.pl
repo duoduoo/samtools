@@ -497,7 +497,7 @@ Options: -d INT    minimum depth          [$opts{d}]
 	  @gaps = ();
 	}
 	die("[vcf2fq] unsorted input\n") if ($t[1] - $last_pos < 0);
-	if ($t[1] - $last_pos > 1) {
+	if (($t[1] - $last_pos > 1)&&($last_pos > 0)) {    # by Pavlos
 	  $seq .= 'n' x ($t[1] - $last_pos - 1);
 	  $qual .= '!' x ($t[1] - $last_pos - 1);
 	}
